@@ -95,7 +95,7 @@ const Login = ({ welcomeName }) => {
                 {showLogin ? (
                   <form>
                     <div className="d-flex justify-content-center">
-                      <div className="col-12  ">
+                      <div className="col-12 p-4  ">
                       <div className="row">
                           <div className="col-12 d-flex justify-content-center mb-4">
                             <p className="login-storeName">ESEMBLY</p>
