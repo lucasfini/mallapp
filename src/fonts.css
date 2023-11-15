@@ -1,0 +1,22 @@
+
+@font-face {
+    font-family: 'Gotham Book';
+    src: local('Gotham Book'), url(../public/fonts/Gotham-Book.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  
+@font-face {
+    font-family: 'Gotham Thin';
+    src: local('Gotham Thin'), url(../public/fonts/Gotham-Thin.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Gotham Light';
+    src: local('Gotham Light'), url(../public/fonts/Gotham-Light.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }

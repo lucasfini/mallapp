@@ -1,38 +1,937 @@
-.App {
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+
+body{
+  font-family: 'Gotham Light', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
+
+
+
+.users-searching-text {
+  font-size: 18px;
+  font-weight:bold;
+  color:  #eaf4f4;
+}
+
+
+
+
+
+.login-content {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.close {
+ 
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+.blur-background {
+  filter: blur(2px); /* Apply the blur effect only when the popup is open */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+
+form{
+  border-radius: 25px;
+  position: relative;
+}
+
+.card{
+  width: 100%;
+  height: 80px;
+  background-color: #ffffff;
+  border-radius: 0px;
+  backdrop-filter: blur(10px);
+  border: none;
+  background-color: rgba(255, 255, 255, 0.413);
+opacity: 1;
+box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+
+}
+
+.nav-link{
+  font-size: 12px;
+  border: none;
+  color: #0f1111;
+}
+.nav-link:hover{
+  color: #000;
+}
+
+.card:hover{
+  background-color: #f7fafa;
+  cursor: pointer;
+  opacity: 1.0;
+  border: 1px solid rgba(0, 0, 0, 0.328);;
+  border-radius: 0px;
+ background-color: rgba(255, 255, 255, 0.982);
+ box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+
+}
+
+/* Styles for the 4th button */
+.special-button {
+  background-color: rgba(255, 255, 255,  0.783);
+ height: 50px;
+  border: none;
+  opacity: 1.0;
+  color: #000000; /* Text color for better visibility */
+}
+
+
+
+.blur-img::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0.8;
+  height: 100%;
+  background-image: url('img/background8.jpg');
+  filter: blur(2px); /* Adjust the blur intensity as needed */
+  z-index: -1;
+  background-size:  cover;
+  background-position: start;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.special-button:hover {
+  border: none;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
-@keyframes App-logo-spin {
-  from {
+.card-body{
+  color:#000000;
+
+  font-weight: 500;
+  width: auto;
+  font-family: 'Gotham Book', sans-serif;
+  opacity: 1;
+}
+
+
+/*Beginning of Buttons  */
+
+.searchButton
+{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 100%;
+  border-radius: 50%;
+ cursor: pointer;
+ border: none;
+ background: none;
+ font-size: 18px;
+ transform: scale(1.00); /* Slightly scale up on hover */
+  transition: 0.5s;
+}
+
+.searchButton:hover{
+  transform: scale(1.05); /* Slightly scale up on hover */
+  transition: 0.5s;
+}
+
+
+
+.exampleButton
+{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 100%;
+  border-radius: 50%;
+ cursor: pointer;
+ border: none;
+ background: none;
+ font-size: 18px;
+ transform: scale(1.00); /* Slightly scale up on hover */
+  transition: 0.5s;
+}
+
+.logButton {
+
+
+  background-color: #000000;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 13px;
+  padding: 8px 15px ;
+  width: auto;
+ 
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  border-radius: 0px;
+
+}
+
+
+
+@media screen and (min-width: 1300px) {
+  .searchpage-title{
+    color: rgba(0, 0, 0, 0.724); font-family: 'Helvetica Neue', sans-serif; font-size: 150px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center; 
+   
+  }
+
+}
+
+
+
+
+
+@media screen and (min-width: 900px) and (max-width:1299px) {
+  .searchpage-title{
+    color: rgba(0, 0, 0, 0.724); font-family: 'Helvetica Neue', sans-serif; font-size: 180px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center; 
+
+}
+
+}
+
+
+
+@media screen and (min-width: 300px) and (max-width:899px) {
+  .searchpage-title{
+    color: rgba(0, 0, 0, 0.724);font-family: 'Helvetica Neue', sans-serif; font-size: 80px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center; 
+
+}
+
+}
+
+
+
+.logButton:hover {
+ border-radius: 0px;
+ box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.logButton-productsPage{
+  background-color: #000000;
+  border-radius: 0px;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 30px;
+  padding: 0 10px 0 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+
+
+}
+
+.logButton-productsPage:hover{
+  background-color: #000000;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+
+
+
+.login-button{
+border: 1px solid #d5d9d9;
+background-color: none;
+color: none;
+font-size: 15px;
+line-height: 18px;
+padding: 5px 10px;
+border-radius: 10px;
+cursor: pointer;
+
+}
+
+/*Ending of Buttons  */
+
+/*Beginning of Inputs */
+
+input-group {
+  display: flex;
+  align-items: center;
+}
+
+.input-group-append {
+  display: flex;
+}
+
+.input-icon {
+  display: flex;
+  align-items: center;
+  margin-left: 10px; /* Adjust the margin as needed */
+}
+
+.searchBar{
+  background-color: rgba(255, 255, 255, 0.783);
+  padding: 8px 40px 8px 20px;
+  border: none;
+  display:block !important;
+
+  font-size: 25px;
+  border-radius: 0px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 2px;
+  line-height: 50px;
+  
+
+}
+.searchBar:hover {
+  background-color: #eaf4f4;
+}
+
+
+.searchBar:focus{
+  outline: none !important;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  background-color: #eaf4f4;
+}
+
+.searchBar-productsPage{
+ 
+  padding: 8px 40px 8px 20px;
+  border: none;
+  display:block !important;
+  background-color: #eaf4f4;
+  font-size: 20px;
+  line-height: 30px;
+  border-radius: 0px;
+ 
+
+}
+.searchBar-productsPage:hover {
+  background-color: #eaf4f4b8;
+}
+
+
+
+.searchBar-productsPage:focus{
+  outline: none !important;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  background-color: #eaf4f4;
+}
+
+.login-registerInput{
+
+  padding: 2px 10px 2px 10px;
+  border-radius: 10px;
+  line-height: 25px;
+  border-radius: 10px;
+  border: 1px solid #d5d9d9;
+
+
+}
+
+.login-storeName{
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 40px;
+  font-weight: bold;
+  font-family: 'Helvetica Neue', sans-serif;
+
+  
+}
+
+.login-google{
+  width: 100%;
+}
+
+.login-registerInput:focus{
+
+  padding: 2px 10px 2px 10px;
+  border-radius: 10px;
+  line-height: 25px;
+  border: none;
+
+
+}
+
+
+
+
+/*Ending of Inputs */
+
+/*Beginning of Product Card */
+
+.product-logo{
+  font-size: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 1;
+  color: #000000;
+  color: rgba(0, 0, 0, 0.724); 
+  font-family: 'Helvetica Neue', sans-serif;
+
+}
+
+.productImg{
+  width: 100%;
+  height: 400px;
+  display: block;
+ padding-right: 10px;
+  cursor: pointer;
+
+}
+.productImage-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.productOverlay-container{
+  position: absolute;
+  bottom: 0;
+  padding-bottom: 10px;
+  right: 0;
+  width: 15%; /* Adjust this percentage as needed */
+ 
+}
+
+.productSimilarstoreLogoContainer{
+
+  position: absolute;
+  bottom: 0;
+  padding-bottom: 10px;
+  right: 0;
+  width: 20%; 
+}
+
+.productSimilarstoreLogo {
+  width: 100%;
+  height: auto;
+  display: block;
+  
+  padding-right: 30px;
+}
+body.modal-open {
+  overflow: visible;
+  position: absolute;
+  width: 100%;
+  height:100%;
+}
+
+body.show{
+  overflow: visible;
+}
+.productstoreLogo{
+  width: 100%;
+  height: auto;
+  display: block;
+  padding-right: 20px;
+}
+.productstoreLogoContainer{
+  width: 80px; /* Ensure the container takes the full width of the column */
+ height: 50px; /* Adjust the maximum height as needed */
+  text-align: center;
+  z-index: 100;
+  margin-bottom: 3px;
+  margin-right: 3px;
+  position: absolute;
+
+}
+
+.item-list .list-group-item:nth-child(odd) {
+  background-color: #ffffff; /* Background color for odd rows */
+}
+
+.item-list .list-group-item:nth-child(even) {
+  background-color: #212121; /* Background color for even rows */
+}
+
+.productImgContainer{
+  width: 310px; /* Ensure the container takes the full width of the column */
+  height: 400px; /* Adjust the maximum height as needed */
+  text-align: center;
+  z-index: 1;
+}
+.item-list {
+  border: none;
+  display: flex;
+  /* Adjust the gap as needed */
+}
+
+.slick-arrow{
+  color: #19A7CE;
+  font-size: 20px;
+}
+
+.slick-arrow:hover{
+  color: #19A7CE;
+  font-size: 25px;
+}
+
+
+.productPrice.odd-row{
+  font-size: 15px;
+  
+  color:#ffffff;
+}
+
+.productName.odd-row{
+color: #ffffff;
+
+font-size: 14px;
+}
+
+.productPrice.even-row{
+  font-size: 15px;
+  color:#000000;
+}
+
+.productName.even-row{
+color: #000000;
+
+font-size: 14px;
+}
+
+.productDot.odd-row{
+  color: #ffffff;
+  
+  font-size: 15px;
+  }
+  
+  .productDot.even-row{
+    font-size: 15px;
+    color:#000000;
+  }
+
+  .productTitle{
+    color: #ffffff;
+    font-size: 25px;
+
+
+  }
+
+  .productTitleContainer{
+    background-color:#000000 ;
+    border:#ffffff px solid ;
+  }
+
+  .productsubTitle{
+    color:#cacaca ;
+    font-size: 13px;
+    opacity: 0.8;
+  }
+
+  
+
+
+
+.productStoreName.odd-row {
+  color: #F5F7F8; /* Background color for odd rows */
+  font-size: 15px;
+  margin: 0px;
+}
+
+.productStoreName.even-row {
+  color: #45474B; /* Background color for even rows */
+  font-size: 15px;
+  margin: 0px;
+}
+
+.productPhrase.odd-row {
+  color: #F0F5F9; 
+  font-size: 25px;
+  opacity: 1;
+  font-family: 'Gotham Book', sans-serif;
+
+}
+
+.productPhrase.even-row {
+  color: #45474B;
+  font-size: 25px;
+  font-family: 'Gotham Book', sans-serif;
+  opacity: 1;
+ 
+}
+
+/* -------------------------------------------------- Product Details CSS ---------------------------------------- */
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  margin: 8px;
+  border: 8px solid #c6c6c6;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #4f4f4f transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
     transform: rotate(0deg);
   }
-  to {
+  100% {
     transform: rotate(360deg);
   }
 }
+
+
+.carosoul-inner{
+  display: flex;
+  transition: transform 0.5s ease-in-out; /* Add a smooth transition effect */
+}
+.carousel-item {
+  flex: 0 0 auto; /* Prevent flex items from growing or shrinking */
+}
+
+.modal-content{
+  border: 1px solid rgb(0, 0, 0);;
+  border-radius: 0;
+ background-color: rgba(255, 255, 255, 0.526);
+
+}
+
+.blurBackground{
+  filter: blur(10px);
+}
+
+.details-storeName{
+  font-size: 18px;
+  font-weight: bold;
+
+}
+
+
+.details-container{
+ height: 100vh;
+}
+
+.details-img{
+  width: 100%; /* Make the image fill the container */
+  height: 550px;
+  display: block;
+
+}
+
+.details-storeLogo{
+  width: 100%;
+  height: auto;
+  display: block;
+  padding-right: 0px;
+}
+
+.details-image-container{
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.overlay-container {
+  position: absolute;
+  margin: 4px;
+  bottom: 0;
+  right: 0;
+  width: 20%; /* Adjust this percentage as needed */
+ /* Center the overlay in the bottom right corner */
+}
+
+.productstoreLogo {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.details-productName{
+  font-size: 24px;
+  color: #000000;
+}
+
+.details-productPrice{
+  font-size: 25px;
+  font-weight: bold;
+  color: #000000;
+  font-family: 'Gotham Book', sans-serif;
+}
+
+.details-getButton{
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 22px;
+  border-radius: 0px;
+  padding: 10px 20px;
+ 
+}
+
+.details-getButton:hover{
+  background-color: transparent;
+  font-weight: bold;
+  border: 1px solid #000000;
+}
+
+
+
+.details-stylistButton{
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 15px;
+  border-radius: 0px;
+ padding: 10px 20px;
+ width: fit-content;
+}
+
+.details-productDetails{
+  font-size: 25px;
+}
+
+.details-productDescription{
+  font-size: 18px;
+  color: #000000;
+  padding: 0px;
+  font-family: 'Gotham Book', sans-serif;
+}
+
+.details-aiStars{
+ 
+ font-size: 25px;
+ color: #4def8e
+
+}
+
+.details-aiStars:hover{
+ 
+  font-size: 25px;
+  color: #ffffff
+ 
+ }
+
+.details-similarTitle{
+  font-size: 20px;
+ 
+  font-family: 'Gotham Book', sans-serif;
+
+}
+
+.details-img-border{
+  border: #000000 solid 2px ;
+  padding:0px;
+}
+
+
+
+.detailsSimilarImg{
+
+  width: 100%;
+  height: 300px;
+  display: block;
+ padding-right: 10px;
+  cursor: pointer;
+
+}
+
+.detailsImgContainer{
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+
+
+
+/* Product Details END -------------------------------- */
+
+/* Login Page Beginning ------------------------------------------------------ */
+
+.login-title{
+font-size: 20px;
+font-weight: bold;
+
+}
+
+.login-subtitle{
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.login-rememberMe{
+  font-size: 14px;
+  font-family: "Gotham Book", 'san-serif';
+
+}
+
+.login-forgotPassword{
+  font-size: 14px;
+  text-decoration: underline;
+  cursor: pointer;
+  font-family: "Gotham Book", 'san-serif';
+}
+
+.login-pageButton{
+  width: 100%;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 10px;
+  font-family: "Gotham Book", 'san-serif';
+  
+}
+
+.login-inputs{
+  border: none;
+  background-color: transparent;
+  color: #000;
+  font-family: "Gotham Book", 'san-serif';
+  border-bottom: 1px solid #00000039; /* You can change the color to your preference */
+  outline: none; /* Remove the default outline */
+  padding: 5px; /* Optional: Add padding for better appearance */
+  margin: 3px;
+}
+
+.login-inputs:focus{
+  background-color: transparent;
+  border: 1px solid #00000039; 
+  color: #000;
+  outline: none !important;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  
+}
+
+.login-noAccountText{
+  font-size: 13px;
+  font-family: "Gotham Book", 'san-serif';
+}
+
+.login-noAccountLink{
+  text-decoration: underline;
+  cursor: pointer;
+  font-family: "Gotham Book", 'san-serif';
+}
+
+
+
+
+/* Login Page End ---------------------------------------------------- */
+
+
+
+
+
+
+
+.horizontalLine {
+  flex: 1;
+  border: 0;
+  border-bottom: 1px solid #e6fef6;
+}
+
+
+.separationline {
+  flex: 1;
+  border: 0;
+  border-top: 1px solid #F1FFFA; /* Adjust the line style as needed */
+   /* Adjust the margin for spacing */
+} 
+
+.separationline2 {
+  flex: 1;
+  border: 0;
+  border-bottom: 2px solid #e3fdf4; /* Adjust the line style as needed */
+   /* Adjust the margin for spacing */
+}
+
+.line {
+  flex: 1;
+  border: 0;
+  border-top: 1px solid #000; /* Adjust the line style as needed */
+  margin: 0 10px; /* Adjust the margin for spacing */
+}
+
+.or {
+  font-size: 15px; /* Adjust the font size as needed */
+  padding: 0 5px; /* Adjust the padding for spacing */
+}
+
+
+/*Beginning of ICONS */
+
+
+.arrowIcon{
+
+color: #000000;
+font-size: 25px;
+
+}
+
+.arrowIcon-mmal{
+
+  color: #00A67E;
+  font-size: 30px;
+  
+  }
+
+/*Ending of ICONS */
+
+
+
+/* Footer styles */
+.footer-container {
+  text-align: center;
+
+}
+
+
+.h-100 {
+  flex: 1; /* Make the content area grow to fill available space */
+  
+}
+
+@media screen and (min-width: 577px) {
+  .footer-title-container {
+    border-right: 1px solid #ffffff4f;
+    /* Add other styles for screens 768px and larger here */
+  }
+}
+
+
+.footer{
+  background-color: #000000;
+  
+}
+
+.footer-title{
+  font-size: 25px;
+  color: #ffffff;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: bold;
+  
+ 
+}
+
+
+
+.footer-right{
+  font-size: 11x;
+  color: #ffffff;
+  opacity: 0.8;
+}
+
+
+/* End of Footer Styles */
+
