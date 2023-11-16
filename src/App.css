@@ -184,7 +184,26 @@ box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 
 
 }
 
+.signOutButton {
 
+
+  background-color: #000000;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 13px;
+  padding: 8px 15px ;
+  width: 100%;
+ 
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  border-radius: 0px;
+
+}
+.signOutButton:hover {
+
+  border-radius: 0px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+
+}
 
 @media screen and (min-width: 1300px) {
   .searchpage-title{
@@ -606,7 +625,7 @@ font-size: 14px;
 .modal-content{
   border: 1px solid rgb(0, 0, 0);;
   border-radius: 0;
- background-color: rgba(255, 255, 255, 0.526);
+ background-color: rgba(255, 255, 255,0.70);
 
 }
 
@@ -766,6 +785,14 @@ font-weight: bold;
 
 }
 
+.login-background{
+  border: 1px solid rgb(0, 0, 0);;
+    border-radius: 0;
+   background-color: rgb(255, 255, 255);
+  
+  }
+
+
 .login-subtitle{
   font-size: 13px;
   margin-top: 5px;
@@ -887,6 +914,24 @@ font-size: 25px;
   }
 
 /*Ending of ICONS */
+
+/* Profile css __________---------------------------------*/
+
+.profile-img{
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.profile-name{
+  font-size:13px;
+  font-family: "gotham Book", 'sans-serif';
+}
+
+.profile-container{
+  cursor: pointer;
+}
 
 
 

@@ -36,17 +36,73 @@ const ProductsPage = () => {
   const [totalLength, setTotalLength] = useState();
   const google = window.google;
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [signedIn, setSignedIn] = useState(false);
+  const [token, setToken] = useState(null);
+  const [user, setUser] = useState(null);
+  const [email, setEmail] = useState(null);
 
-
-  const handleCallbackResponse = (response) => {
-
-
+  const handleCallbackResponse = async (response) => {
+    const idToken = response.credential;
     var userObject = jwtDecode(response.credential);
+    localStorage.setItem("googleUserInfo", JSON.stringify(userObject));
+    console.log(userObject);
+    try {
+      // Perform the Axios call and get search results
+      const loginResponse = await axios.post(
+        `https://rumine.ca/_search/user/sso/google/create?idToken=${encodeURIComponent(idToken)}`
+       
+        
+      );
+     console.log(loginResponse);
+     let token = loginResponse.data.token;
+     localStorage.setItem('accessToken', token);
+      //   console.log(searchResults);
+      window.location.reload();
+      // Navigate to the ProductsPage route and pass searchResults as state
+     
+    } catch (error) {
+      console.error("Error:", error);
+    }
 
-    localStorage.setItem("welcomeName", userObject.given_name);
+
+
+
+
+  };
+
+  const handleSignOut = () => {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('googleUserInfo');
+    localStorage.removeItem('emailUserInfo');
+    setUser(null);
+    setEmail(null);
+    setToken(null);
+    window.location.reload();
   };
 
   useEffect(() => {
+
+
+    
+    const userToken = localStorage.getItem('accessToken'); // Assuming you store the token in localStorage
+
+    if (userToken) {
+      setToken(userToken);
+      const googleInfoString = localStorage.getItem("googleUserInfo");
+      const emailInfoString = localStorage.getItem("emailUserInfo") ;
+      if (googleInfoString != null) {
+        const userInfo = JSON.parse(googleInfoString);
+        console.log('HI')
+        setUser(userInfo);
+        setEmail(null);
+      }
+      else if (emailInfoString){
+        setEmail(emailInfoString);
+        setUser(null);
+      }
+    }
+
+
     setTotalLength(
       results.reduce((acc, item) => acc + item.products.length, 0)
     );
@@ -234,13 +290,56 @@ const ProductsPage = () => {
           </div>
           <div className="col-6 col-sm-6 d-lg-none d-md-none d-xl-none d-flex align-items-center ">
           <div className="col-12 p-3 d-flex align-items-center justify-content-start justify-content-sm-center">
+          {email ? (
+            <div
+              className="dropdown "
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <div className="dropdown-toggle profile-container  d-flex justify-content-end align-items-center ">
+                <p className="pe-2  profile-name ">
+                  {" "}
+                  {email}
+                </p>
+            
+              </div>
+
+              <ul class="dropdown-menu dropdown-menu-end mt-2 p-0">
+                <button className="signOutButton" onClick={handleSignOut}>
+                  Sign Out
+                </button>
+              </ul>
+            </div>
+          ) : user ? (
+            <div
+              className="dropdown "
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <div className="dropdown-toggle profile-container  d-flex justify-content-end align-items-center ">
+                <p className="pe-2  profile-name ">
+                  {" "}
+                  {user.given_name} {user.family_name}
+                </p>
+                <img className="profile-img" src={user.picture} alt="Profile" />
+              </div>
+
+              <ul class="dropdown-menu dropdown-menu-end mt-2 p-0">
+                <button className="signOutButton" onClick={handleSignOut}>
+                  Sign Out
+                </button>
+              </ul>
+            </div>
+          ) : (
             <button
-              className="logButton-productsPage"
+              type="button"
+              className="logButton"
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
             >
-              Sign In
+              Sign in
             </button>
+          )}
           </div>
           </div>
           <div className="col-xl-5 col-lg-8 col-12 col-sm-12 col-md-7 p-3 d-flex align-items-center justify-content-center ">
@@ -262,13 +361,56 @@ const ProductsPage = () => {
           </div>
           <div className="col-lg-2 col-xl-6 d-sm-none d-none d-md-flex d-lg-flex col-md-2 ">
           <div className="  p-3 col-12 d-flex align-items-center justify-content-center justify-content-lg-end  justify-content-xl-end ">
+          {email ? (
+            <div
+              className="dropdown "
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <div className="dropdown-toggle profile-container  d-flex justify-content-end align-items-center ">
+                <p className="pe-2  profile-name ">
+                  {" "}
+                  {email}
+                </p>
+            
+              </div>
+
+              <ul class="dropdown-menu dropdown-menu-end mt-2 p-0">
+                <button className="signOutButton" onClick={handleSignOut}>
+                  Sign Out
+                </button>
+              </ul>
+            </div>
+          ) : user ? (
+            <div
+              className="dropdown "
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <div className="dropdown-toggle profile-container  d-flex justify-content-end align-items-center ">
+                <p className="pe-2  profile-name ">
+                  {" "}
+                  {user.given_name} {user.family_name}
+                </p>
+                <img className="profile-img" src={user.picture} alt="Profile" />
+              </div>
+
+              <ul class="dropdown-menu dropdown-menu-end mt-2 p-0">
+                <button className="signOutButton" onClick={handleSignOut}>
+                  Sign Out
+                </button>
+              </ul>
+            </div>
+          ) : (
             <button
-              className=" logButton-productsPage"
+              type="button"
+              className="logButton"
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
             >
-              Sign In
+              Sign in
             </button>
+          )}
           </div>
           </div>
         </div>
