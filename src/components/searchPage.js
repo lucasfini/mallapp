@@ -18,10 +18,14 @@ function SearchPage() {
   const [searchResults, setSearchResults] = useState(null);
   const [welcomeName, setWelcomeName] = useState("");
   const [signedIn, setSignedIn] = useState(false);
+  const [limitReached, setLimitReached] = useState(false);
   const navigate = useNavigate();
   const [token, setToken] = useState(null);
   const [user, setUser] = useState(null);
   const [email, setEmail] = useState(null);
+  const [searchCount, setSearchCount] = useState(
+    parseInt(localStorage.getItem("searchCount")) || 0
+  );
   const google = window.google;
 
   const exampleSearch = (query) => {
@@ -57,7 +61,7 @@ function SearchPage() {
   const handleSignOut = () => {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("googleUserInfo");
-    localStorage.removeItem('emailUserInfo');
+    localStorage.removeItem("emailUserInfo");
     setEmail(null);
     setUser(null);
     setToken(null);
@@ -70,13 +74,12 @@ function SearchPage() {
     if (userToken) {
       setToken(userToken);
       const googleInfoString = localStorage.getItem("googleUserInfo");
-      const emailInfoString = localStorage.getItem("emailUserInfo") ;
+      const emailInfoString = localStorage.getItem("emailUserInfo");
       if (googleInfoString) {
         const userInfo = JSON.parse(googleInfoString);
         console.log(userInfo);
         setUser(userInfo);
-      }
-      else if (emailInfoString){
+      } else if (emailInfoString) {
         setEmail(emailInfoString);
       }
     }
@@ -138,6 +141,8 @@ function SearchPage() {
   };
 
   const performSearch = async (query) => {
+  
+
     try {
       // Perform the Axios call and get search results
       const response = await axios.get(
@@ -145,6 +150,10 @@ function SearchPage() {
       );
       const searchResults = response.data;
       //   console.log(searchResults);
+
+      const updatedCount = searchCount + 1;
+      setSearchCount(updatedCount);
+      localStorage.setItem("searchCount", updatedCount.toString());
 
       // Navigate to the ProductsPage route and pass searchResults as state
       navigate(`/productPage?query=${query}`, { state: { searchResults } });
@@ -161,18 +170,14 @@ function SearchPage() {
     <div className="container-flush blur-img" style={{ height: "100vh" }}>
       <div className="row m-3 ">
         <div className="col-12  text-end">
-        {email ? (
+          {email ? (
             <div
               className="dropdown "
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
               <div className="dropdown-toggle profile-container  d-flex justify-content-end align-items-center ">
-                <p className="pe-2  profile-name ">
-                  {" "}
-                  {email}
-                </p>
-            
+                <p className="pe-2  profile-name "> {email}</p>
               </div>
 
               <ul class="dropdown-menu dropdown-menu-end mt-2 p-0">

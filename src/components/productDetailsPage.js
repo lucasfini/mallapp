@@ -19,7 +19,6 @@ const ProductDetailsPage = ({
   onGetDetails,
 }) => {
   if (!product || !similarProduct) {
-    console.log("HI");
     return null; // Return null if product is not defined
   }
   console.log(stylistProduct);

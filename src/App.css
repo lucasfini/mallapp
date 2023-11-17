@@ -417,6 +417,46 @@ input-group {
  
 }
 
+.products-blurred{
+  filter: blur(50px);
+  opacity: 0.4;
+}
+
+.products-image-blur {
+  content: '';
+  position: sticky !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0.8;
+  height: 100%;
+  background-image: url('img/blur.png');
+  filter: blur(0px); /* Adjust the blur intensity as needed */
+  z-index: -1;
+  background-size:  cover;
+  background-position: start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.products-image-container{
+  height: 100vh;
+}
+
+.products-limitReached-box{
+  border: 1px solid rgb(0, 0, 0);;
+  border-radius: 0;
+padding: 15px;
+z-index: 2;
+font-size: 20px;
+box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+ font-family: 'Gotham Book', 'san-serif';
+}
+
+
+
+
 .productSimilarstoreLogoContainer{
 
   position: absolute;
@@ -957,6 +997,7 @@ font-size: 25px;
 
 .footer{
   background-color: #000000;
+  z-index: 0;
   
 }
 
